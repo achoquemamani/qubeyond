@@ -39,3 +39,12 @@ quasar build
 
 ### Customize the configuration
 See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+
+### Temporal
+```
+Icon: https://fonts.google.com/icons?selected=Material+Icons
+Package manager: yarn
+Javascript library: axios
+Programming Language: typescript
+The project has a changelog
+```

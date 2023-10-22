@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add stores with Pinia
+- Add button for managing the different languages
+- Add funcionality for changing to dark
+- Add funcionality for exporting to csv
 - Use .env for manage api url
 - Create screen for showing planets
 - Create changelog file

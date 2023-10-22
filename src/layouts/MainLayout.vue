@@ -10,8 +10,7 @@
           aria-label="Menu"
           @click="toggleLeftDrawer"
         />
-
-        <q-toolbar-title> Qubeyond </q-toolbar-title>
+        <HeaderInfo></HeaderInfo>
 
         <div></div>
       </q-toolbar>
@@ -39,6 +38,7 @@ import { ref } from 'vue';
 import EssentialLink, {
   EssentialLinkProps
 } from 'components/EssentialLink.vue';
+import HeaderInfo from 'components/HeaderInfo.vue';
 
 const essentialLinks: EssentialLinkProps[] = [
   {

@@ -46,7 +46,11 @@ Icon: https://fonts.google.com/icons?selected=Material+Icons
 Package manager: yarn
 Javascript library: axios
 Programming Language: typescript
+
 The project has:
 1. a changelog
-2. use of function for sharing in different components
+2. a readme
+3. use of function for sharing in different components
+4. a button for changing to dark
+5. a pagination
 ```

@@ -1,12 +1,28 @@
 <template>
   <div>
-    <!-- <p>{{ title }}</p> -->
+    <p>{{ title }}</p>
     <div class="q-pa-md">
-      <q-table :rows="planets" :columns="columns" row-key="name" />
+      <q-table
+        v-model:pagination="pagination"
+        :rows="planets"
+        :columns="columns"
+        row-key="name"
+        :rows-per-page-options="[]"
+        @request="onRequest"
+      >
+        <template v-slot:top-right>
+          <q-btn
+            color="primary"
+            icon-right="archive"
+            label="Export to csv"
+            no-caps
+            @click="exportTable"
+          />
+        </template>
+      </q-table>
       <q-inner-loading
         :showing="isLoading"
         label="Loading..."
-        label-class="text-teal"
         label-style="font-size: 1.1em"
       />
     </div>
@@ -15,58 +31,118 @@
 
 <script lang="ts">
 import axios from 'axios';
+import { exportFile, useQuasar } from 'quasar';
 import { defineComponent, ref, onMounted } from 'vue';
-import { Planet, Column, GetPlanetResponse } from './models';
+import {
+  Planet,
+  ReadablePlanet,
+  Column,
+  GetPlanetResponse,
+  Pagination
+} from './models';
 import { config } from '../config/index';
+import useNotification from '../mixins/notification';
+import useExportCsv from '../mixins/exportCsv';
+import useSortItems from '../mixins/sortItems';
+
 const API_URL = config.apiUrl;
 
 export default defineComponent({
   name: 'PlanetTable',
+  props: {
+    title: {
+      type: String,
+      required: true
+    }
+  },
   setup() {
-    const planets = ref<Planet[]>([]);
+    const $q = useQuasar();
+    const planets = ref<ReadablePlanet[]>([]);
     const isLoading = ref<boolean>(false);
     const columns = ref<Column[]>([
       { name: 'name', label: 'Tatooine', field: 'name', sortable: true },
       {
         name: 'rotation_period',
-        label: 'rotation period',
+        label: 'Rotation period',
         field: 'rotation_period',
         sortable: true
       },
-      { name: 'diameter', label: 'Diameter', field: 'diameter' },
+      {
+        name: 'diameter',
+        label: 'Diameter',
+        field: 'diameter',
+        sortable: true
+      },
       { name: 'climate', label: 'Climate', field: 'climate' },
       { name: 'gravity', label: 'Gravity', field: 'gravity' }
     ]);
+    const pagination = ref({
+      sortBy: 'desc',
+      descending: false,
+      page: 1,
+      rowsPerPage: 10,
+      rowsNumber: 10
+    });
+    const { notifySuccess, notifyError } = useNotification($q);
+    const { getContent } = useExportCsv();
+    const { sortByField } = useSortItems();
 
     onMounted(async () => {
-      await getPlanets();
+      await getPlanets(1);
     });
 
-    const getPlanets = async () => {
+    const getPlanets = async (page: number) => {
       isLoading.value = true;
-      console.log(API_URL);
       try {
         const response: GetPlanetResponse = await axios.get(
-          `${API_URL}/planets`
+          `${API_URL}/planets?page=${page}`
         );
-        planets.value = response.data.results;
+        pagination.value.rowsNumber = response.data.count;
+        planets.value = response.data.results.map((item) => {
+          return Planet.fromDto(item);
+        });
         isLoading.value = false;
       } catch (err) {
         isLoading.value = false;
-        throw err;
+        notifyError('Error in searching planets.');
+      }
+    };
+
+    const onRequest = async (props: Pagination) => {
+      const { page, rowsPerPage, sortBy, descending } = props.pagination;
+
+      await getPlanets(page);
+
+      if (sortBy) {
+        const sortFn = sortByField(descending, sortBy);
+        planets.value.sort(sortFn);
+      }
+
+      pagination.value.page = page;
+      pagination.value.rowsPerPage = rowsPerPage;
+      pagination.value.sortBy = sortBy;
+      pagination.value.descending = descending;
+    };
+
+    const exportTable = () => {
+      const content = getContent(columns.value, planets.value);
+
+      const status = exportFile('table-export.csv', content, 'text/csv');
+      if (!status) {
+        notifyError('Browser denied file download...');
+      } else {
+        notifySuccess('Descargado con éxito');
       }
     };
 
     return {
       planets,
       columns,
-      isLoading
+      isLoading,
+      pagination,
+      onRequest,
+      exportTable
     };
   }
 });
-
-/*interface Props {
-  title: string;
-}
-withDefaults(defineProps<Props>(), {});*/
 </script>

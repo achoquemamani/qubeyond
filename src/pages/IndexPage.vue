@@ -1,5 +1,5 @@
 <template>
-  <q-page class="row justify-evenly q-ma-lg">
+  <q-page class="row justify-evenly q-ma-md">
     <div class="col-sm-12 row">
       <PlanetTable :title="title"></PlanetTable>
     </div>

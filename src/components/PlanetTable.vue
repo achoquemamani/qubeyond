@@ -1,6 +1,8 @@
 <template>
   <div class="col-sm-12">
     <q-table
+      :grid="$q.screen.xs"
+      :dense="$q.screen.lt.md"
       v-model:pagination="pagination"
       :rows="planets"
       :columns="columns"
@@ -24,7 +26,7 @@
           </div>
         </div>
         <div class="col-sm-12 row">
-          <div class="col-sm-6 row">
+          <div class="col-md-9 col-sm-8 row q-mb-md">
             <q-input
               class="q-mr-sm"
               stack-label
@@ -52,7 +54,7 @@
               <q-tooltip>{{ t('pages.index.btnCleanSearchText') }}</q-tooltip>
             </q-btn>
           </div>
-          <div class="col-sm-6">
+          <div class="col-md-3 col-sm-4">
             <q-btn
               class="btn-export-csv"
               color="primary"

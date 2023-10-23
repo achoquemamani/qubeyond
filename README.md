@@ -62,4 +62,5 @@ The project has:
 6. idioms
 7. docker
 8. custom columns for hidding
+9. responsive
 ```

@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header>
       <q-toolbar>
         <q-btn
           flat
@@ -29,11 +29,26 @@
         />
       </q-list>
     </q-drawer>
+
+    <q-footer>
+      <q-toolbar>
+        <q-toolbar-title class="text-center footer"
+          >© 2023 {{ companyName }}</q-toolbar-title
+        >
+      </q-toolbar>
+    </q-footer>
+
     <q-page-container>
       <router-view />
     </q-page-container>
   </q-layout>
 </template>
+
+<style scoped lang="scss">
+.footer {
+  font-size: 18px;
+}
+</style>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
@@ -42,6 +57,7 @@ import EssentialLink, {
 } from 'components/EssentialLink.vue';
 import HeaderInfo from 'components/HeaderInfo.vue';
 import { useI18n } from 'vue-i18n';
+import { useAppStore } from 'stores/app-store';
 
 export default defineComponent({
   name: 'MainLayout',
@@ -50,6 +66,8 @@ export default defineComponent({
     HeaderInfo
   },
   setup() {
+    const store = useAppStore();
+    const companyName = store.getCompanyName;
     const { t } = useI18n();
     const leftDrawerOpen = ref(false);
     const essentialLinks: EssentialLinkProps[] = [
@@ -64,7 +82,7 @@ export default defineComponent({
       leftDrawerOpen.value = !leftDrawerOpen.value;
     }
 
-    return { t, leftDrawerOpen, essentialLinks, toggleLeftDrawer };
+    return { companyName, leftDrawerOpen, essentialLinks, t, toggleLeftDrawer };
   }
 });
 </script>

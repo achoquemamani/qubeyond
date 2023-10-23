@@ -1,7 +1,7 @@
 {
   "name": "qubeyond",
   "version": "1.0.0",
-  "description": "Report for showing planets",
+  "description": "Qubeyond: Report for showing planets",
   "productName": "qubeyond-ui",
   "author": "achoquemamani.ar@gmail.com",
   "private": true,

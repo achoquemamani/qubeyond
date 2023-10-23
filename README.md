@@ -40,6 +40,12 @@ quasar build
 ### Customize the configuration
 See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
 
+### Run docker
+```bash
+docker build -t qubeyond-frontend .
+docker run -it -p 8081:80 -d --rm --name qubeyond-app-1 qubeyond-frontend
+```
+
 ### Summary
 ```
 Icon: https://fonts.google.com/icons?selected=Material+Icons
@@ -53,4 +59,6 @@ The project has:
 3. use of function for sharing in different components
 4. a button for changing to dark
 5. a pagination
+6. idioms
+7. docker
 ```

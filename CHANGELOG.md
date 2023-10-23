@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Implement traductions in the project
 - Add stores with Pinia
 - Add button for managing the different languages
 - Add funcionality for changing to dark

@@ -18,7 +18,9 @@
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <q-item-label header> Important links </q-item-label>
+        <q-item-label header>{{
+          `${t('pages.mainLayout.sideBarText')}`
+        }}</q-item-label>
 
         <EssentialLink
           v-for="link in essentialLinks"
@@ -33,24 +35,36 @@
   </q-layout>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue';
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
 import EssentialLink, {
   EssentialLinkProps
 } from 'components/EssentialLink.vue';
 import HeaderInfo from 'components/HeaderInfo.vue';
+import { useI18n } from 'vue-i18n';
 
-const essentialLinks: EssentialLinkProps[] = [
-  {
-    title: 'Planets',
-    caption: 'Information',
-    icon: 'table_view'
+export default defineComponent({
+  name: 'MainLayout',
+  components: {
+    EssentialLink,
+    HeaderInfo
+  },
+  setup() {
+    const { t } = useI18n();
+    const leftDrawerOpen = ref(false);
+    const essentialLinks: EssentialLinkProps[] = [
+      {
+        title: `${t('pages.mainLayout.options.planets.text')}`,
+        caption: `${t('pages.mainLayout.options.planets.subtext')}`,
+        icon: 'table_view'
+      }
+    ];
+
+    function toggleLeftDrawer() {
+      leftDrawerOpen.value = !leftDrawerOpen.value;
+    }
+
+    return { t, leftDrawerOpen, essentialLinks, toggleLeftDrawer };
   }
-];
-
-const leftDrawerOpen = ref(false);
-
-function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value;
-}
+});
 </script>

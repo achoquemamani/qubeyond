@@ -60,3 +60,9 @@ export interface Pagination {
 export interface UserConfiguration {
   isDark: boolean;
 }
+
+export interface Language {
+  value: string;
+  icon: string;
+  langIso: string;
+}

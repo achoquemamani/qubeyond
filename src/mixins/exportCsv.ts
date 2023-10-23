@@ -1,6 +1,6 @@
 export default function useExportCsv() {
     const wrapCsvValue = (val: string) => {
-        let formatted = val;
+        let formatted = val.toString();
 
         formatted = formatted.split('"').join('');
         formatted = formatted.split(',').join(' -');

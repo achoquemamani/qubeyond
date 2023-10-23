@@ -14,7 +14,7 @@
           <q-btn
             color="primary"
             icon-right="archive"
-            label="Export to csv"
+            :label="`${t('pages.index.btnExportCsv')}`"
             no-caps
             @click="exportTable"
           />
@@ -22,7 +22,7 @@
       </q-table>
       <q-inner-loading
         :showing="isLoading"
-        label="Loading..."
+        :label="`${t('pages.index.loading')}`"
         label-style="font-size: 1.1em"
       />
     </div>
@@ -41,6 +41,7 @@ import {
   Pagination
 } from './models';
 import { config } from '../config/index';
+import { useI18n } from 'vue-i18n';
 import useNotification from '../mixins/notification';
 import useExportCsv from '../mixins/exportCsv';
 import useSortItems from '../mixins/sortItems';
@@ -57,24 +58,39 @@ export default defineComponent({
   },
   setup() {
     const $q = useQuasar();
+    const { t } = useI18n();
+
     const planets = ref<ReadablePlanet[]>([]);
     const isLoading = ref<boolean>(false);
     const columns = ref<Column[]>([
-      { name: 'name', label: 'Tatooine', field: 'name', sortable: true },
+      {
+        name: 'name',
+        label: `${t('pages.index.columns.name')}`,
+        field: 'name',
+        sortable: true
+      },
       {
         name: 'rotation_period',
-        label: 'Rotation period',
+        label: `${t('pages.index.columns.rotationPeriod')}`,
         field: 'rotation_period',
         sortable: true
       },
       {
         name: 'diameter',
-        label: 'Diameter',
+        label: `${t('pages.index.columns.diameter')}`,
         field: 'diameter',
         sortable: true
       },
-      { name: 'climate', label: 'Climate', field: 'climate' },
-      { name: 'gravity', label: 'Gravity', field: 'gravity' }
+      {
+        name: 'climate',
+        label: `${t('pages.index.columns.climate')}`,
+        field: 'climate'
+      },
+      {
+        name: 'gravity',
+        label: `${t('pages.index.columns.gravity')}`,
+        field: 'gravity'
+      }
     ]);
     const pagination = ref({
       sortBy: 'desc',
@@ -140,6 +156,7 @@ export default defineComponent({
       columns,
       isLoading,
       pagination,
+      t,
       onRequest,
       exportTable
     };

@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add new fields in the report for planets
 - Add docker in the project
 - Implement traductions in the project
 - Add stores with Pinia

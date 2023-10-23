@@ -61,4 +61,5 @@ The project has:
 5. a pagination
 6. idioms
 7. docker
+8. custom columns for hidding
 ```

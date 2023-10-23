@@ -6,13 +6,19 @@ export default {
   success: 'Action exitoso',
   pages: {
     index: {
-      title: 'Planets',
+      title: 'Planetas',
+      inputToSearch: 'Buscar',
+      btnCleanSearchText: 'Limpiar filtros',
       columns: {
         name: 'Nombre',
         rotationPeriod: 'Periodo de rotación',
+        orbitalPeriod: 'Periodo orbital',
         diameter: 'Diametro',
         climate: 'Clima',
         gravity: 'Gravedad',
+        terrain: 'Terreno',
+        surfaceWater: 'Agua superficial',
+        population: 'Población'
       },
       btnExportCsv: 'Exportar a csv',
       loading: 'Cargando...'

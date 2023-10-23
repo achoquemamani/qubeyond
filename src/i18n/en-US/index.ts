@@ -7,12 +7,18 @@ export default {
   pages: {
     index: {
       title: 'Planets',
+      inputToSearch: 'Search',
+      btnCleanSearchText: 'Clean filters',
       columns: {
         name: 'Name',
         rotationPeriod: 'Rotation period',
+        orbitalPeriod: 'Orbital period',
         diameter: 'Diameter',
         climate: 'Climate',
         gravity: 'Gravity',
+        terrain: 'Terrain',
+        surfaceWater: 'Surface water',
+        population: 'Population'
       },
       btnExportCsv: 'Export to csv',
       loading: 'Loading...'

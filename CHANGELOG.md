@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-## [v1.0.1](https://github.com/achoquemamani/qubeyond/blob/v1.0.1/CHANGELOG.md) - 2023-10-24
+## [v1.1.0](https://github.com/achoquemamani/qubeyond/blob/v1.1.0/CHANGELOG.md) - 2023-10-24
 
 - Add unit tests
 

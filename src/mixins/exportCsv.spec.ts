@@ -1,10 +1,10 @@
 export { }
-import exportCsv from "./exportCsv";
+import exportCsv from './exportCsv';
 
 describe('ExportCsv.ts', () => {
   test('Test simple text', () => {
     const { wrapCsvValue } = exportCsv();
-    expect(wrapCsvValue("Test content")).toBe("Test content");
+    expect(wrapCsvValue('Test content')).toBe('Test content');
   });
 
   test('Test text with special character', () => {

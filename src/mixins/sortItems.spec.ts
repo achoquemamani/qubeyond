@@ -31,15 +31,15 @@ describe('SortItems.spec.ts', () => {
 
   test('Test sort descending', () => {
     const { sortByField } = sortItems();
-    const sortFn = sortByField(false, "name");
+    const sortFn = sortByField(false, 'name');
     planets.sort(sortFn);
-    expect(planets[0].name).toBe("new planet");
+    expect(planets[0].name).toBe('new planet');
   });
 
   test('Test sort ascending', () => {
     const { sortByField } = sortItems();
-    const sortFn = sortByField(true, "name");
+    const sortFn = sortByField(true, 'name');
     planets.sort(sortFn);
-    expect(planets[0].name).toBe("test");
+    expect(planets[0].name).toBe('test');
   });
 })

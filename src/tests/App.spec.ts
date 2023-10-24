@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+export { }
 
 describe("App.vue", () => {
   test("setup correctlty", () => {

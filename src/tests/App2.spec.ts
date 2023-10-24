@@ -1,17 +1,16 @@
-import { mount } from '@vue/test-utils';
-//import MainLayout from '../layouts/MainLayout.vue';
+export { }
 
 describe("App.vue", () => {
-    test("setup correctlty", () => {
-        expect(true).toBe(true);
-    });
+  test("setup correctlty", () => {
+    expect(true).toBe(true);
+  });
 
-    /*test("displays message", () => {
-      const wrapper = mount(MainLayout);
-  
-      // Assert the rendered text of the component
-      expect(wrapper.text()).toContain('© 2023')
-    });*/
+  /*test("displays message", () => {
+    const wrapper = mount(MainLayout);
+ 
+    // Assert the rendered text of the component
+    expect(wrapper.text()).toContain('© 2023')
+  });*/
 })
 
 /*

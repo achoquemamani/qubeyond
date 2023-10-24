@@ -9,13 +9,13 @@ describe('ExportCsv.ts', () => {
 
   test('Test text with special character', () => {
     const { wrapCsvValue } = exportCsv();
-    expect(wrapCsvValue("Weateher, word")).toBe("Weateher - word");
+    expect(wrapCsvValue('Weateher, word')).toBe('Weateher - word');
   });
 
   test('Test get content', () => {
     const { getContent } = exportCsv();
-    expect(getContent([{ label: "Name", field: "name" }], [{
-      name: "Pedro"
+    expect(getContent([{ label: 'Name', field: 'name' }], [{
+      name: 'Pedro'
     }])).toBe(`Name\r\nPedro`);
   });
 })

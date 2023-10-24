@@ -63,4 +63,5 @@ The project has:
 7. docker
 8. custom columns for hidding
 9. responsive
+10. unit test
 ```

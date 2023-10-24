@@ -54,8 +54,8 @@
 import { defineComponent, ref } from 'vue';
 import EssentialLink, {
   EssentialLinkProps
-} from 'components/EssentialLink.vue';
-import HeaderInfo from 'components/HeaderInfo.vue';
+} from '../components/EssentialLink.vue';
+import HeaderInfo from '../components/HeaderInfo.vue';
 import { useI18n } from 'vue-i18n';
 import { useAppStore } from 'stores/app-store';
 

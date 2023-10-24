@@ -24,6 +24,6 @@ export default function useExportCsv() {
     };
 
     return {
-        getContent
+        getContent, wrapCsvValue
     };
 }

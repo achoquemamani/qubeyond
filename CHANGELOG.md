@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+## [v1.2.0](https://github.com/achoquemamani/qubeyond/blob/v1.2.0/CHANGELOG.md) - 2023-10-24
+
+- Fix dockerfile file
+
+### Added
+
 ## [v1.1.0](https://github.com/achoquemamani/qubeyond/blob/v1.1.0/CHANGELOG.md) - 2023-10-24
 
 - Add unit tests

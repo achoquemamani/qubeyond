@@ -2,12 +2,14 @@
 FROM node:18-alpine as develop-stage
 WORKDIR /app
 COPY package*.json ./
+RUN echo "develop-stage"
 RUN npm install -g @quasar/cli
 COPY . .
 
 # build stage
 FROM develop-stage as build-stage
-RUN npm install
+RUN echo "build-stage"
+RUN npm install --force or --legacy-peer-deps
 RUN quasar build
 
 # production stage

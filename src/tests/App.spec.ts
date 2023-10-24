@@ -1,7 +1,7 @@
 export { }
 
-describe("App.vue", () => {
-  test("setup correctlty", () => {
+describe('App.vue', () => {
+  test('setup correctlty', () => {
     expect(true).toBe(true);
   });
 })

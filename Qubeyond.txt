@@ -1,0 +1,11 @@
+Questions
+
+1. What's a closure? Where in the code is there a closure?
+
+It's a function which can access to the variable outside of its scope and it creates in execution time.
+I use the closure in unit test and in the component PlanetTable.vue.
+
+2. Which are the potential side-effects in any function? Could you point out any of these cases in your code? Are they expected? Can they be avoided?
+
+Side effects in functions refer to changes in the state of the program that occur outside the scope of the function. They may include modifying a global variable, modifying a parameter passed by reference, or any other action that affects the state of the program.
+I use it when I assign the data for showing planets. In this particular case, it is expected result.
